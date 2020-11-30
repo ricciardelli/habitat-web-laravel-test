@@ -21,6 +21,20 @@ class Transaction extends Model
     ];
 
     /**
+     * Boot method
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($transaction) {
+            $product = Product::find($transaction->product_id);
+            $product->quantity -= $transaction->quantity;
+            $product->update();
+        });
+    }
+
+    /**
      * Product sold
      */
     public function product()

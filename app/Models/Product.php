@@ -22,6 +22,13 @@ class Product extends Model
     ];
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['status'];
+
+    /**
      * Seller of the product
      */
     public function seller()
@@ -35,5 +42,10 @@ class Product extends Model
     public function transactions()
     {
         return $this->hasMany(Transaction::class);
+    }
+
+    public function getStatusAttribute()
+    {
+        return $this->quantity > 0 ? 'In Stock' : 'Sold Out';
     }
 }
