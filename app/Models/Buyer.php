@@ -9,6 +9,8 @@ class Buyer extends User
 {
     use HasFactory;
 
+    protected $table = 'users';
+
     /**
      * Boot method
      */
@@ -26,6 +28,6 @@ class Buyer extends User
      */
     public function transactions()
     {
-        return $this->hasMany(Transaction::class);
+        return $this->hasMany(Transaction::class, 'user_id');
     }
 }

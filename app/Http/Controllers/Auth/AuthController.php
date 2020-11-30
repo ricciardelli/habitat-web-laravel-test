@@ -64,7 +64,7 @@ class AuthController extends Controller
         $request->user()->token()->revoke();
 
         return $this->showOne([
-            'message' => 'Cierre de sesión exisoto'
+            'message' => 'Cierre de sesión exitoso'
         ]);
     }
 }

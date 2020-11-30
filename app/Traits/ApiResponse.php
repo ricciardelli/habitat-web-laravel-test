@@ -23,10 +23,10 @@ trait ApiResponse
     /**
      * Show multiples entities
      *
-     * @param array $entities
+     * @param $entities
      * @param int $code
      */
-    public function showAll(array $entities, int $code = 200)
+    public function showAll($entities, int $code = 200)
     {
         return response()->json([
             'data' => $entities
